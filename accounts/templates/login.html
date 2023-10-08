@@ -1,0 +1,16 @@
+<a href="{% url 'accounts:index' %}">記事一覧</a>
+<a href="/admin/">管理者画面</a>
+{% if user.is_authenticated %}
+<h2>ログイン済み: {{ user.username }}</h2>
+<a href="{% url 'accounts:create' %}">記事投稿</a>
+<a href="{% url 'accounts:logout' %}">ログアウト</a>
+{% else %}
+<a href="{% url 'accounts:login' %}">ログイン</a>
+{% endif %}
+<hr>
+
+<h1>ログイン</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="ログイン" />
+</form>
