@@ -11,8 +11,9 @@
 {% endif %}
 <hr />
 
-<h1>記事投稿</h1>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" value="投稿" />
-</form>
+<h1>ユーザ一覧</h1>
+{% for user in object_list %}
+<p>{{ user.username }}</p>
+<p>{{ user.email }}</p>
+<p>{{ user.password }}</p>
+{% endfor %}

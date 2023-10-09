@@ -1,4 +1,5 @@
 <a href="{% url 'accounts:index' %}">記事一覧</a>
+<a href="{% url 'accounts:user_index' %}">ユーザ一覧</a>
 <a href="/admin/">管理者画面</a>
 {% if user.is_authenticated %}
 <h2>ログイン済み: {{ user.username }}</h2>
@@ -6,13 +7,17 @@
 <a href="{% url 'accounts:logout' %}">ログアウト</a>
 {% else %}
 <a href="{% url 'accounts:login' %}">ログイン</a>
+<a href="{% url 'accounts:signup' %}">サインアップ</a>
 {% endif %}
 <hr />
 
 <h1>記事一覧</h1>
 {% for article in object_list %}
-<p>{{ article.title }}</p>
-<p>{{ article.content }}</p>
-{% if article.image %}
-<img src="{{ article.image.url }}" width="300px" />
-{% endif %}{% endfor %}
+<div style="border: 3px solid red">
+  <p>{{ article.title }} by {{ article.user.username }}</p>
+  <p>{{ article.content }}</p>
+  {% if article.image %}
+  <img src="{{ article.image.url }}" width="300px" />
+  {% endif %}
+</div>
+{% endfor %}
