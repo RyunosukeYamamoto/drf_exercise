@@ -12,10 +12,11 @@ class ArticleSerializer(serializers.ModelSerializer):
         depth = 1
 
     def create(self, validated_data):
+        user = self.context["request"].user
         article = Articles.objects.create(
             title=validated_data["title"],
             content=validated_data["content"],
-            user=User.objects.get(pk=1),
+            user=user,
         )
         if "image" in validated_data:
             article.image = validated_data["image"]

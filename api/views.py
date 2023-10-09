@@ -19,7 +19,9 @@ class ArticleAPIlistCreate(generics.ListCreateAPIView):
 
     # def create(self, request, *args, **kwargs):
     #     response = super().create(request, *args, **kwargs)
-    #     response.data["user"] = self.request.user.pk
+    #     print(f"これがテスト結果{type(response.data)}左のやつ")
+    #     print(f"これはログインユーザ{self.request.user}左のやつ")
+    #     response.data["user"] = self.request.user
     #     return response
 
 
