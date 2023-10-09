@@ -14,7 +14,7 @@
 <h1>記事一覧</h1>
 {% for article in object_list %}
 <div style="border: 3px solid red">
-  <p>{{ article.title }} by {{ article.user.username }}</p>
+  <p>{{ article.pk }}|{{ article.title }} by {{ article.user.username }}</p>
   <p>{{ article.content }}</p>
   {% if article.image %}
   <img src="{{ article.image.url }}" width="300px" />
